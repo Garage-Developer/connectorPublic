@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;700&display=swap" rel="stylesheet">
+    <title>Supported Connectors</title>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>Supported Connectors</h1>
+            <p>Find a complete list of all supported Connectors, including their stage, status, supported features and  data retrieval statistics.</p>
+            <input class="form-control" type="text" id="myInput" onkeyup="filter()" placeholder="Search for your institution here">
+            <div class="hide-show-columns">
+                <h4>Hide/Show columns</h4>
+                <div class="hide-show-checkboxes">
+                <div>
+                  <label for="connector-stats">
+                    <input onclick="hideShowColumns([2])" type="checkbox" checked>
+                    ID
+                  </label>
+                  <label for="identity-supported">
+                      <input type="checkbox" onclick="hideShowColumns([3], 'connector-stats')" checked>
+                      Tier
+                  </label>
+                  <label for="auth">
+                      <input type="checkbox" onclick="hideShowColumns([4], 'connector-stats')" checked>
+                      Country
+                  </label>
+                  <label for="auth">
+                    <input type="checkbox" onclick="hideShowColumns([5], 'connector-stats')" checked>
+                      Stage
+                  </label>
+                  <label for="auth">
+                    <input type="checkbox" onclick="hideShowColumns([6], 'connector-stats')" checked>
+                      Authorisation
+                  </label>
+                  <label for="auth">
+                    <input type="checkbox" onclick="hideShowColumns([7], 'connector-stats')" checked>
+                    Status
+                  </label>
+                </div>
+              <div>
+                <label for="auth">
+                  <input type="checkbox" onclick="hideShowColumns([8], 'connector-stats')" checked>
+                  Credentials
+                </label>
+                <label for="auth">
+                  <input type="checkbox" onclick="hideShowColumns([9], 'connector-stats')" checked>
+                  Accounts
+                </label>
+                <label for="auth">
+                  <input type="checkbox" onclick="hideShowColumns([10], 'connector-stats')" checked>
+                  Transactions
+                </label>
+                <label for="auth">
+                  <input type="checkbox" onclick="hideShowColumns([11], 'connector-stats')" checked>
+                  Metadata
+                </label>
+<!--                 <label for="features">
+                    <input type="checkbox" onclick="hideShowColumns([12, 13, 14, 15, 16, 17], 'connector-stats')" checked>
+                    Identity supported
+                </label>
+                <label for="features">
+                  <input type="checkbox" onclick="hideShowColumns([18, 19, 20, 21], 'connector-stats')" checked>
+                  Features
+                </label> -->
+              </div>
+              </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="notes">
+                <ul>
+                    <li>
+                        <b>ALPHA:</b> login step only complete, waiting for connections to complete development
+                    </li>
+                    <li>
+                        <b>BETA:</b> these are complete but immature connectors, they are beta until we have seen enough data to verify they are mature, and are considered `under-maintenance` until promoted to live
+                    </li>
+                    <li>
+                        <b>LIVE:</b> mature, stable connectors
+                    </li>
+                    <li>
+                        <b>STATUS:</b> all enabled connectors can this be used, status is updated dynamically looking at the previous hour or jobs to let you know if there is any degraded performance or outage - <a href="https://dashboard.basiq.io/status">The status page</a> provides up to date status for each connector - SEE CONNECTOR STATUS KEY 
+                    </li>
+                    <li>
+                        <b>NZ:</b> Predominantly PDF bank statement upload
+                    </li>
+                    <br>
+                    <li>
+                        <em>Sort table by clicking on the relevant header</em>
+                    </li>
+                    <li>
+                      You can use <a target="_blank" href="https://docs.google.com/spreadsheets/d/1ygDp_E8WHZPRIX-qk-BttzGdeheRs-gADUOTtCW63Kc/edit?usp=sharing">this template</a> to copy your data into.
+                    </li>
+                    <br>
+                    <button id="copy_btn" onclick="copyTable()">Copy table</button>
+                </ul>
+            </div>
+            <div class="key">
+                <p class="operational">operational</p>
+                <p class="under-maintenance">under-maintenence</p>
+                <p class="degraded-performance">degraded-performance</p>
+                <p class="partial-outage">partial-outage</p>
+                <p class="major-outage">major-outage</p>
+                <p class="sandbox-institution">sandbox-institution</p>
+            </div>
+        </div>
+    </header>
+    <table id="table" class="table">
+        <thead>
+            <tr>
+                <th class="sortable" onclick="sortTable(0)">Name</th>
+                <th class="sortable" onclick="sortTable(1)">ID</th>
+                <th class="sortable" onclick="sortTable(2)" >Tier</th>
+                <th class="sortable" onclick="sortTable(3)">Country</th>
+                <th class="sortable" onclick="sortTable(4)">Stage</th>
+                <th class="sortable" onclick="sortTable(5)">Authorisation</th>
+                <th class="sortable" onclick="sortTable(6)">Status</th>
+                <th class="sortable" onclick="sortNumbers(7)">Credentials</th>
+                <th class="sortable" onclick="sortNumbers(8)">Accounts</th>
+                <th class="sortable" onclick="sortNumbers(9)">Transactions</th>
+                <th class="sortable" onclick="sortNumbers(10)">Metadata</th>
+<!--                 <th>Full name</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Acc holder</th>
+                <th>Mortg meta</th>
+                <th>Txn enrich</th>
+                <th>Statement upload</th> -->
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script src="js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

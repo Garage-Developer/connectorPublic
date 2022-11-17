@@ -1,0 +1,138 @@
+table, header {
+    font-family: 'Inter', sans-serif;
+}
+
+header {
+    width: 100%;
+    min-height: 30vh;
+    background-image: url('https://drive.google.com/uc?id=1bTuM52RdRoMt93QnFYy1VHtB2QIaIAT9');
+    background-size: cover;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+p {
+    font-size: 28px;
+}
+
+.header-right p {
+    padding: 5px;
+    font-size: 15px;
+    margin: 5px;
+}
+
+
+.title-rows {
+    background-color: #A6E2FB;
+    font-size: 20px;
+}
+
+th {
+    background-color: #E9EFF2;
+    vertical-align: middle;
+}
+
+.title-rows td {
+    text-align: center;
+    border: 1px solid rgba(160, 160, 160);
+}
+
+.under-maintenance {
+    background-color: rgba(221, 237, 254);
+}
+
+.degraded-performance {
+    background-color: rgb(254, 250, 204);
+}
+
+.partial-outage {
+    background-color:rgb(245, 224, 195);
+}
+
+.major-outage {
+    background-color: rgba(248, 192, 187);
+}
+
+.operational {
+    background-color: rgb(228, 237, 225);
+}
+
+.sandbox-institution {
+    background-color: lightgray;
+}
+
+input {
+    max-width: 360%;
+    letter-spacing: 0.5px;
+}
+
+.sortable:hover {
+    cursor: pointer;
+}
+
+.header-left {
+    width: 45%;
+}
+
+
+.header-right {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.893);
+    width: 45%;
+    padding: 15px;
+    justify-content: space-between;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 15px;
+    padding: 0;
+}
+
+.notes {
+    max-width: 80%;
+}
+
+label {
+    padding-top: 5px;
+    font-size: 20px;
+    display: block;
+}
+
+.hide-show-columns {
+    margin-top: 20px;
+}
+
+.hide-show-checkboxes {
+    display: flex;
+}
+
+.hide-show-checkboxes div {
+    width: 40%;
+}
+
+input[type=checkbox]  {
+    transform: scale(1.5);
+    margin-right: 10px;
+    line-height: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#copy_btn {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    background-color: #0075dc;
+    color: #fff;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+}
